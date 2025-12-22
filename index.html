@@ -7,8 +7,8 @@
     <style>
         :root {
             --border-width: 4px;
-            --bg-color: #000000; /* Fond total noir */
-            --card-bg: #1a1a1a;   /* Fond des cases gris très foncé */
+            --bg-color: #000000;
+            --card-bg: #1a1a1a;
             --text-color: #ffffff;
         }
 
@@ -33,7 +33,7 @@
 
         /* Cadre NOIR - Image */
         .box-black {
-            border: var(--border-width) solid #444; /* Gris foncé pour être visible sur le noir */
+            border: var(--border-width) solid #444;
             border-radius: 40px;
             height: 200px;
             display: flex;
@@ -42,6 +42,8 @@
             background-color: var(--card-bg);
             overflow: hidden;
         }
+        
+        /* Style pour que l'image s'adapte bien au cadre */
         .box-black img {
             width: 100%;
             height: 100%;
@@ -126,7 +128,7 @@
     <div class="container">
         
         <div class="box-black">
-            <p style="color: #666;">[ Image ici ]</p>
+            <img src="https://raw.githubusercontent.com/G4NON/Image-Cloud/main/Capture%20d'écran%202025-12-23%20002407.png" alt="Mon objectif">
         </div>
 
         <div class="box-orange">
@@ -163,11 +165,6 @@
                         <td>5 200€</td>
                         <td style="color: #2ecc71;">Payé</td>
                     </tr>
-                    <tr>
-                        <td>Février</td>
-                        <td>4 100€</td>
-                        <td style="color: #2ecc71;">Payé</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -176,7 +173,7 @@
 
     <script>
         const objectifTotal = 56000;
-        const montantActuel = 12500; // <--- MODIFIEZ CE CHIFFRE ICI
+        const montantActuel = 12500; // Modifie ce chiffre pour remplir le compteur
 
         function updateCounter(current, total) {
             const percentage = (current / total) * 100;
@@ -190,7 +187,6 @@
             amountText.innerText = current.toLocaleString();
         }
 
-        // Lancement de l'animation après un court délai
         setTimeout(() => updateCounter(montantActuel, objectifTotal), 300);
     </script>
 
