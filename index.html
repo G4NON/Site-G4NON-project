@@ -1,11 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mon Objectif 56 000€</title>
+    <style>
+        :root {
+            --border-width: 4px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        /* Cadre NOIR - Image */
+        .box-black {
+            border: var(--border-width) solid black;
+            border-radius: 40px; /* Coins arrondis comme sur le schéma */
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .box-black img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Cadre VERT - Histoire */
+        .box-green {
+            grid-column: 2;
+            grid-row: 1 / 3; /* Occupe deux rangées à droite */
+            border: var(--border-width) solid #2ecc71;
+            padding: 15px;
+        }
+
+        /* Cadre ORANGE - Compteur */
+        .box-orange {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .progress-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        svg {
+            transform: rotate(-90deg);
+        }
+
+        .circle-bg {
+            fill: none;
+            stroke: #eee;
+            stroke-width: 15;
+        }
+
+        .circle-progress {
+            fill: none;
+            stroke: #e67e22; /* Orange */
+            stroke-width: 15;
+            stroke-linecap: round;
+            stroke-dasharray: 440; /* Circonférence */
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 1s ease-out;
+        }
+
+        .percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Cadre BLEU - Suivi mensuel */
+        .box-blue {
+            grid-column: 1 / 3; /* Prend toute la largeur en bas */
+            border: var(--border-width) solid #3498db;
+            padding: 20px;
+            min-height: 250px;
+        }
+
+        h2 { margin-top: 0; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Incoming soon...</h1>
+
+    <div class="container">
+        
+        <div class="box-black">
+            <p style="color: grey;">[ Emplacement Image ]</p>
+            </div>
+
+        <div class="box-orange">
+            <div class="progress-container">
+                <svg width="150" height="150">
+                    <circle class="circle-bg" cx="75" cy="75" r="70"></circle>
+                    <circle id="progress-bar" class="circle-progress" cx="75" cy="75" r="70"></circle>
+                </svg>
+                <div class="percentage-text">
+                    <span id="current-amount">0</span>€<br>
+                    <small style="font-size: 0.7rem; color: #666;">sur 56k€</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-green">
+            <h2>L'Histoire</h2>
+            <p>Décrivez ici pourquoi vous avez cet objectif de 56 000€. Quels sont vos rêves, vos motivations et les étapes clés de votre projet.</p>
+        </div>
+
+        <div class="box-blue">
+            <h2>Suivi des Gains Mensuels</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mois</th>
+                        <th>Montant Gagné</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Janvier</td>
+                        <td>4 500€</td>
+                        <td>Lancement du projet.</td>
+                    </tr>
+                    <tr>
+                        <td>Février</td>
+                        <td>3 200€</td>
+                        <td>Progression constante.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        // CONFIGURATION DU COMPTEUR
+        const objectifTotal = 56000;
+        const montantActuel = 15000; // MODIFIEZ CETTE VALEUR POUR VOIR LE CERCLE SE REMPLIR
+
+        function updateCounter(current, total) {
+            const percentage = (current / total) * 100;
+            const circle = document.getElementById('progress-bar');
+            const amountText = document.getElementById('current-amount');
+            
+            // Calcul du périmètre (2 * PI * r) -> 2 * 3.14 * 70 ≈ 440
+            const circumference = 440;
+            const offset = circumference - (percentage / 100 * circumference);
+            
+            circle.style.strokeDashoffset = offset;
+            amountText.innerText = current.toLocaleString();
+        }
+
+        // Initialisation
+        updateCounter(montantActuel, objectifTotal);
+    </script>
+
 </body>
 </html>
