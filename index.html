@@ -23,7 +23,6 @@
     }
 
     .container {
-        /* MODIFICATION ICI : Largeur max pour être responsive */
         max-width: 850px;
         width: 100%;
         display: grid;
@@ -116,21 +115,20 @@
     th { text-align: left; color: #3498db; padding: 10px; border-bottom: 2px solid #333; }
     td { padding: 8px 10px; border-bottom: 1px solid #333; color: #ccc; font-size: 0.9rem; }
 
-    /* --- AJOUT MEDIA QUERY MOBILE --- */
     @media (max-width: 768px) {
         .container {
-            grid-template-columns: 1fr; /* Une seule colonne */
+            grid-template-columns: 1fr; 
             gap: 15px;
             padding: 10px;
         }
 
         .box-black, .box-green, .box-orange, .box-blue {
-            grid-column: 1; /* Tout le monde dans la colonne 1 */
-            grid-row: auto; /* Ordre automatique */
+            grid-column: 1;
+            grid-row: auto; 
         }
         
         .box-black {
-            height: 150px; /* Un peu plus petit sur mobile */
+            height: 150px; 
         }
     }
     </style>
