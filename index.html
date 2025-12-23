@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goal Hellcat | Suivi G4NON</title>
+    <title>Goal Hellcat | G4NON Tracker</title>
     <style>
     :root {
         --border-width: 4px;
@@ -131,7 +131,7 @@
         
         <div class="box-black">
             <img src="https://raw.githubusercontent.com/G4NON/Image-Cloud/main/Capture%20d'écran%202025-12-23%20002407.png" alt="Dodge Challenger Hellcat">
-            <div class="car-name">Dodge Challenger 6.2 V8 717 ch Hellcat SRT</div>
+            <div class="car-name">Dodge Challenger 6.2 V8 717 hp Hellcat SRT</div>
         </div>
 
         <div class="box-orange">
@@ -142,7 +142,7 @@
                 </svg>
                 <div class="percentage-text">
                     <span id="current-amount">0</span>€<br>
-                    <small style="color: #888;">sur 56 000€</small>
+                    <small style="color: #888;">out of 56,000€</small>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
         </div>
 
         <div class="box-blue">
-            <h2>Suivi Annuel & Mensuel</h2>
+            <h2>Annual & Monthly Tracking</h2>
             <div id="year-container" class="year-accordion">
                 </div>
         </div>
@@ -170,7 +170,7 @@
         const objectifTotal = 56000;
         const startYear = 2026;
         const yearsToTrack = 8;
-        const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         function initTracker() {
             const container = document.getElementById('year-container');
@@ -181,7 +181,7 @@
                 let yearHtml = `
                     <div class="year-item" id="year-${currentYear}">
                         <div class="year-header" onclick="toggleYear(${currentYear})">
-                            <span class="year-title">Année ${currentYear}</span>
+                            <span class="year-title">Year ${currentYear}</span>
                             <span class="year-total" id="total-${currentYear}">0 €</span>
                         </div>
                         <div class="month-list">
