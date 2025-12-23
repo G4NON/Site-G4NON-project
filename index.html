@@ -150,7 +150,7 @@
                     <circle id="progress-bar" class="circle-progress" cx="80" cy="80" r="70"></circle>
                 </svg>
                 <div class="percentage-text">
-                    <span id="current-amount">0</span>€<br>
+                    <span id="current-amount">7000</span>€<br>
                     <small style="color: #888;">sur 56 000€</small>
                 </div>
             </div>
@@ -196,7 +196,7 @@
         function updateCounter() {
             // Calcule automatiquement la somme de toutes les cases "gain-val"
             const gains = document.querySelectorAll('.gain-val');
-            let totalActuel = 0;
+            let totalActuel = 7000;
             gains.forEach(cell => {
                 totalActuel += parseFloat(cell.innerText) || 0;
             });
