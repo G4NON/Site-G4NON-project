@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Goal Hellcat | Suivi G4NON</title>
-    <meta name="description" content="Suivi de progression pour l'acquisition d'une Dodge Challenger Hellcat 717ch. Objectif : 56 000€.">
-    <meta name="keywords" content="G4NON, Dodge Challenger, Hellcat, Objectif financier, Suivi business">
-
     <style>
     :root {
         --border-width: 4px;
@@ -36,7 +33,6 @@
         box-sizing: border-box;
     }
 
-    /* Cadre Image + Nom de la voiture */
     .box-black {
         border: var(--border-width) solid #444;
         border-radius: 40px;
@@ -49,145 +45,84 @@
         padding-bottom: 15px;
     }
     
-    .box-black img {
-        width: 100%;
-        height: 160px;
-        object-fit: cover;
-    }
+    .box-black img { width: 100%; height: 160px; object-fit: cover; }
 
     .car-name {
-        color: white;
-        font-size: 0.85rem;
-        font-weight: bold;
-        text-align: center;
-        padding: 10px 5px 0 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        color: white; font-size: 0.85rem; font-weight: bold; text-align: center;
+        padding: 10px 5px 0 5px; text-transform: uppercase; letter-spacing: 1px;
     }
 
-    /* Cadre Business Ideas */
     .box-green {
-        grid-column: 2;
-        grid-row: 1 / 3;
+        grid-column: 2; grid-row: 1 / 3;
         border: var(--border-width) solid var(--accent-orange);
-        padding: 20px;
-        background-color: var(--card-bg);
-        border-radius: 10px;
+        padding: 20px; background-color: var(--card-bg); border-radius: 10px;
     }
 
-    /* Cadre Compteur */
     .box-orange {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;
     }
 
-    .progress-container {
-        position: relative;
-        width: 160px;
-        height: 160px;
-    }
-
+    .progress-container { position: relative; width: 160px; height: 160px; }
     svg { transform: rotate(-90deg); }
-
     .circle-bg { fill: none; stroke: #333; stroke-width: 12; }
-
     .circle-progress {
-        fill: none;
-        stroke: var(--accent-orange);
-        stroke-width: 12;
-        stroke-linecap: round;
-        stroke-dasharray: 440;
-        stroke-dashoffset: 440;
+        fill: none; stroke: var(--accent-orange); stroke-width: 12;
+        stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440;
         transition: stroke-dashoffset 1.5s ease-in-out;
     }
 
     .percentage-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
     }
+    .percentage-text span { font-size: 1.5rem; font-weight: bold; color: var(--accent-orange); }
 
-    .percentage-text span {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--accent-orange);
-    }
-
-    /* Zone du bouton Instagram entre Business et Suivi */
-    .social-area {
-        grid-column: 1 / 3;
-        display: flex;
-        justify-content: center;
-        padding: 10px 0;
-    }
+    .social-area { grid-column: 1 / 3; display: flex; justify-content: center; padding: 10px 0; }
 
     .btn-insta {
-        display: inline-flex;
-        align-items: center;
-        background-color: transparent;
-        border: 2px solid var(--accent-orange);
-        color: white;
-        padding: 12px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
+        display: inline-flex; align-items: center; background-color: transparent;
+        border: 2px solid var(--accent-orange); color: white; padding: 12px 30px;
+        border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem;
+        transition: all 0.3s ease; gap: 10px;
     }
+    .btn-insta:hover { background-color: var(--accent-orange); transform: scale(1.05); box-shadow: 0 0 20px rgba(230, 126, 34, 0.4); }
 
-    .btn-insta:hover {
-        background-color: var(--accent-orange);
-        transform: scale(1.05);
-        box-shadow: 0 0 15px var(--accent-orange);
-    }
-
-    /* Cadre Suivi mensuel */
+    /* --- SECTION ACCORDEON ANNEES --- */
     .box-blue {
-        grid-column: 1 / 3;
-        border: var(--border-width) solid var(--accent-orange);
-        padding: 25px;
-        background-color: var(--card-bg);
-        border-radius: 10px;
+        grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange);
+        padding: 25px; background-color: var(--card-bg); border-radius: 10px;
     }
 
-    h2 { margin-top: 0; color: #eee; border-bottom: 1px solid #333; padding-bottom: 10px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-    th { text-align: left; color: #3498db; padding: 10px; border-bottom: 2px solid #333; }
-    td { padding: 8px 10px; border-bottom: 1px solid #333; color: #ccc; font-size: 0.9rem; }
+    .year-accordion { margin-top: 15px; border-radius: 8px; overflow: hidden; }
 
-    /* Version Mobile */
+    .year-item { border-bottom: 1px solid #333; }
+
+    .year-header {
+        background: #252525; padding: 15px; display: flex; justify-content: space-between;
+        cursor: pointer; transition: background 0.3s; align-items: center;
+    }
+    .year-header:hover { background: #333; }
+    .year-title { font-weight: bold; color: #eee; }
+    .year-total { color: var(--accent-orange); font-weight: bold; }
+
+    .month-list {
+        display: none; background: #111; padding: 10px 20px;
+    }
+
+    .month-row {
+        display: flex; justify-content: space-between; padding: 8px 0;
+        border-bottom: 1px solid #222; font-size: 0.9rem; color: #ccc;
+    }
+
+    .active .month-list { display: block; }
+    .active .year-header { border-left: 4px solid var(--accent-orange); }
+
     @media (max-width: 768px) {
-        .container {
-            grid-template-columns: 1fr; 
-            gap: 15px;
-            padding: 15px;
-        }
-
-        .box-black, .box-green, .box-orange, .social-area, .box-blue {
-            grid-column: 1;
-            grid-row: auto; 
-        }
-        
-        .box-black {
-            height: auto; 
-        }
-
-        .box-green {
-            order: 3; /* Place Business Ideas après le compteur */
-        }
-
-        .social-area {
-            order: 4; /* Bouton Instagram entre Business et Suivi */
-        }
-
-        .box-blue {
-            order: 5;
-        }
+        .container { grid-template-columns: 1fr; gap: 15px; padding: 15px; }
+        .box-black, .box-green, .box-orange, .social-area, .box-blue { grid-column: 1; grid-row: auto; }
+        .box-black { height: auto; }
+        .box-green { order: 3; }
+        .social-area { order: 4; }
+        .box-blue { order: 5; }
     }
     </style>
 </head>
@@ -219,53 +154,77 @@
         </div>
 
         <div class="social-area">
-            <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-insta">
+            <a href="https://www.instagram.com/g4non__/" target="_blank" class="btn-insta">
                 Follow my progress on Instagram
             </a>
         </div>
 
         <div class="box-blue">
-            <h2>Suivi Déc. 2025 - Déc. 2026</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Mois</th>
-                        <th>Gain (€)</th>
-                    </tr>
-                </thead>
-                <tbody id="gains-table">
-                    <tr><td>Décembre 2025</td><td class="gain-val">---</td></tr>
-                    <tr><td>Janvier 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Février 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Mars 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Avril 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Mai 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Juin 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Juillet 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Août 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Septembre 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Octobre 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Novembre 2026</td><td class="gain-val">---</td></tr>
-                    <tr><td>Décembre 2026</td><td class="gain-val">---</td></tr>
-                </tbody>
-            </table>
+            <h2>Suivi Annuel & Mensuel</h2>
+            <div id="year-container" class="year-accordion">
+                </div>
         </div>
 
     </div>
 
     <script>
         const objectifTotal = 56000;
+        const startYear = 2026;
+        const yearsToTrack = 8;
+        const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+
+        function initTracker() {
+            const container = document.getElementById('year-container');
+            
+            for (let i = 0; i < yearsToTrack; i++) {
+                let currentYear = startYear + i;
+                
+                let yearHtml = `
+                    <div class="year-item" id="year-${currentYear}">
+                        <div class="year-header" onclick="toggleYear(${currentYear})">
+                            <span class="year-title">Année ${currentYear}</span>
+                            <span class="year-total" id="total-${currentYear}">0 €</span>
+                        </div>
+                        <div class="month-list">
+                            ${months.map(m => `
+                                <div class="month-row">
+                                    <span>${m}</span>
+                                    <span class="gain-val" data-year="${currentYear}">---</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += yearHtml;
+            }
+            updateCounter();
+        }
+
+        function toggleYear(year) {
+            const el = document.getElementById(`year-${year}`);
+            el.classList.toggle('active');
+        }
 
         function updateCounter() {
-            const gains = document.querySelectorAll('.gain-val');
-            let totalActuel = 0;
-            gains.forEach(cell => {
-                // Nettoie les espaces et récupère le nombre
-                const val = parseFloat(cell.innerText.replace(/\s/g, ''));
-                if (!isNaN(val)) totalActuel += val;
+            const allGains = document.querySelectorAll('.gain-val');
+            let globalTotal = 0;
+            let yearlyTotals = {};
+
+            allGains.forEach(cell => {
+                const year = cell.getAttribute('data-year');
+                const val = parseFloat(cell.innerText.replace(/\s/g, '')) || 0;
+                
+                globalTotal += val;
+                yearlyTotals[year] = (yearlyTotals[year] || 0) + val;
             });
 
-            const percentage = (totalActuel / objectifTotal) * 100;
+            // Update yearly totals in headers
+            for (let year in yearlyTotals) {
+                document.getElementById(`total-${year}`).innerText = yearlyTotals[year].toLocaleString() + " €";
+            }
+
+            // Update Main Progress Circle
+            const percentage = (globalTotal / objectifTotal) * 100;
             const circle = document.getElementById('progress-bar');
             const amountText = document.getElementById('current-amount');
             
@@ -273,10 +232,13 @@
             const dashoffset = circumference - (Math.min(percentage, 100) / 100 * circumference);
             
             circle.style.strokeDashoffset = dashoffset;
-            amountText.innerText = totalActuel.toLocaleString();
+            amountText.innerText = globalTotal.toLocaleString();
         }
 
-        window.onload = () => setTimeout(updateCounter, 300);
+        window.onload = () => {
+            initTracker();
+            setTimeout(updateCounter, 300);
+        };
     </script>
 
 </body>
