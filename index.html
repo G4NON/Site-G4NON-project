@@ -9,7 +9,7 @@
         --border-width: 4px;
         --bg-color: #000000;
         --card-bg: #1a1a1a;
-        --inner-box-bg: #2a2a2a; /* Gris pour le remplissage intérieur */
+        --inner-box-bg: #2a2a2a; 
         --text-color: #ffffff;
         --accent-orange: #800000; 
     }
@@ -101,7 +101,6 @@
         padding: 10px 5px 0 5px; text-transform: uppercase; letter-spacing: 1px;
     }
 
-    /* Style mis à jour pour les bulles Business & Summary */
     .box-green {
         border: var(--border-width) solid var(--accent-orange);
         padding: 20px; 
@@ -118,23 +117,22 @@
         font-size: 1.2rem;
     }
 
-    /* Le carré gris rempli avec angles ronds */
+    /* MISE À JOUR : Aligné en haut à gauche */
     .content-box {
         background-color: var(--inner-box-bg);
         border-radius: 12px;
-        padding: 40px 20px;
-        text-align: center;
+        padding: 15px; /* Marge interne pour que le texte ne colle pas aux bords */
+        text-align: left; /* Texte à gauche */
         flex-grow: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #444; /* Optionnel: légère bordure pour définir le gris */
+        min-height: 120px; /* Assure une hauteur minimale pour le carré */
+        border: 1px solid #444;
     }
 
     .content-box p {
         margin: 0;
         color: #aaa;
         font-style: italic;
+        font-size: 0.9rem;
     }
 
     .box-orange {
