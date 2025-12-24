@@ -97,7 +97,7 @@
         stroke-width: 12;
         stroke-linecap: round; 
         stroke-dasharray: 345.5; 
-        stroke-dashoffset: 345.5; /* Défini à 0% (non rempli) */
+        stroke-dashoffset: 345.5; 
         transition: stroke-dashoffset 1.5s ease-in-out;
     }
 
@@ -150,17 +150,16 @@
     .active .month-list { display: block; }
     .active .year-header { border-left: 4px solid var(--accent-orange); }
 
-    /* MISE À JOUR : Alignement du crédit sur la croix rouge */
     .footer-wrapper {
-        max-width: 900px; /* Aligné sur la largeur du container */
+        max-width: 900px;
         width: 100%;
-        display: flex;
-        justify-content: flex-end; /* Pousse à droite */
-        padding: 10px 0 40px 0; /* Espace en bas de page */
+        padding: 10px 20px 30px 20px;
+        box-sizing: border-box;
+        text-align: right; 
     }
 
     .footer-credit {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-style: italic;
         color: #555;
     }
@@ -212,7 +211,7 @@
             </div>
 
             <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
-                <span>📸 Instagram Progress</span>
+                <span>Follow my progress on Instagram</span>
             </a>
         </div>
 
@@ -222,7 +221,7 @@
                 <p>Coming soon...</p>
             </div>
             <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span>🎵 TikTok Incoming</span>
+                <span>Coming soon</span>
             </a>
         </div>
 
@@ -233,7 +232,7 @@
     </div>
 
     <div class="footer-wrapper">
-        <div class="footer-credit">by G4NON</div>
+        <span class="footer-credit">by G4NON</span>
     </div>
 
     <script>
@@ -278,8 +277,7 @@
 
             allGains.forEach(cell => {
                 const year = cell.getAttribute('data-year');
-                const textVal = cell.innerText.replace(/\s/g, '').replace('€', '');
-                const val = parseFloat(textVal) || 0;
+                const val = parseFloat(cell.innerText.replace(/\s/g, '').replace('€', '')) || 0;
                 globalTotal += val;
                 yearlyTotals[year] = (yearlyTotals[year] || 0) + val;
             });
@@ -291,12 +289,10 @@
 
             const circumference = 345.5;
 
-            // Update Car Goal (0% au chargement si tableau vide)
             const pcCar = Math.min((globalTotal / goalCar) * 100, 100);
             document.getElementById('progress-car').style.strokeDashoffset = circumference - (pcCar / 100 * circumference);
             document.getElementById('amount-car').innerText = globalTotal.toLocaleString();
 
-            // Update Insurance (0% au chargement si tableau vide)
             const pcInsurance = Math.min((globalTotal / goalInsurance) * 100, 100);
             document.getElementById('progress-insurance').style.strokeDashoffset = circumference - (pcInsurance / 100 * circumference);
             document.getElementById('amount-insurance').innerText = Math.min(globalTotal, goalInsurance).toLocaleString();
@@ -304,7 +300,6 @@
 
         window.onload = () => {
             initTracker();
-            // Animation au chargement
             setTimeout(updateCounter, 300);
         };
     </script>
