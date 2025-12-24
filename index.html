@@ -10,10 +10,9 @@
         --bg-color: #000000;
         --card-bg: #1a1a1a;
         --text-color: #ffffff;
-        --accent-orange: #800000; /* Rouge Bordeaux */
+        --accent-orange: #800000; 
     }
 
-    /* --- ANIMATION DE CHARGEMENT --- */
     #loader-wrapper {
         position: fixed;
         top: 0;
@@ -53,7 +52,6 @@
         opacity: 0;
         visibility: hidden;
     }
-    /* ------------------------------ */
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -264,7 +262,7 @@
                 <span>Follow my progress on Instagram</span>
             </a>
             <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span>Coming soon</span>
+                <span>Coming soon ...</span>
             </a>
         </div>
 
@@ -350,7 +348,6 @@
 
         window.onload = () => {
             initTracker();
-            // Simule un petit délai de chargement (1.5s) pour apprécier l'animation
             setTimeout(() => {
                 document.getElementById('loader-wrapper').classList.add('loader-hidden');
                 updateCounter();
