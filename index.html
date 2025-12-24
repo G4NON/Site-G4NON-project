@@ -97,7 +97,7 @@
         stroke-width: 12;
         stroke-linecap: round; 
         stroke-dasharray: 345.5; 
-        stroke-dashoffset: 345.5; 
+        stroke-dashoffset: 345.5; /* Défini à 0% (non rempli) */
         transition: stroke-dashoffset 1.5s ease-in-out;
     }
 
@@ -150,17 +150,17 @@
     .active .month-list { display: block; }
     .active .year-header { border-left: 4px solid var(--accent-orange); }
 
-    /* MODIFICATION : Crédit aligné à droite en bas de la page */
+    /* MISE À JOUR : Alignement du crédit sur la croix rouge */
     .footer-wrapper {
-        max-width: 900px;
+        max-width: 900px; /* Aligné sur la largeur du container */
         width: 100%;
-        padding: 10px 20px 30px 20px;
-        box-sizing: border-box;
-        text-align: right; /* Aligne le texte à droite */
+        display: flex;
+        justify-content: flex-end; /* Pousse à droite */
+        padding: 10px 0 40px 0; /* Espace en bas de page */
     }
 
     .footer-credit {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-style: italic;
         color: #555;
     }
@@ -212,7 +212,7 @@
             </div>
 
             <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
-                <span>Follow my progress on Instagram</span>
+                <span>📸 Instagram Progress</span>
             </a>
         </div>
 
@@ -222,7 +222,7 @@
                 <p>Coming soon...</p>
             </div>
             <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span>Coming soon</span>
+                <span>🎵 TikTok Incoming</span>
             </a>
         </div>
 
@@ -233,7 +233,7 @@
     </div>
 
     <div class="footer-wrapper">
-        <span class="footer-credit">by G4NON</span>
+        <div class="footer-credit">by G4NON</div>
     </div>
 
     <script>
@@ -278,7 +278,8 @@
 
             allGains.forEach(cell => {
                 const year = cell.getAttribute('data-year');
-                const val = parseFloat(cell.innerText.replace(/\s/g, '').replace('€', '')) || 0;
+                const textVal = cell.innerText.replace(/\s/g, '').replace('€', '');
+                const val = parseFloat(textVal) || 0;
                 globalTotal += val;
                 yearlyTotals[year] = (yearlyTotals[year] || 0) + val;
             });
@@ -290,10 +291,12 @@
 
             const circumference = 345.5;
 
+            // Update Car Goal (0% au chargement si tableau vide)
             const pcCar = Math.min((globalTotal / goalCar) * 100, 100);
             document.getElementById('progress-car').style.strokeDashoffset = circumference - (pcCar / 100 * circumference);
             document.getElementById('amount-car').innerText = globalTotal.toLocaleString();
 
+            // Update Insurance (0% au chargement si tableau vide)
             const pcInsurance = Math.min((globalTotal / goalInsurance) * 100, 100);
             document.getElementById('progress-insurance').style.strokeDashoffset = circumference - (pcInsurance / 100 * circumference);
             document.getElementById('amount-insurance').innerText = Math.min(globalTotal, goalInsurance).toLocaleString();
@@ -301,6 +304,7 @@
 
         window.onload = () => {
             initTracker();
+            // Animation au chargement
             setTimeout(updateCounter, 300);
         };
     </script>
