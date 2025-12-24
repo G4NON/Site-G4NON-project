@@ -33,11 +33,11 @@
         box-sizing: border-box;
     }
 
-    /* Colonne de droite pour aligner le bloc vert et le bouton TikTok */
-    .right-column {
+    /* Colonnes gauche et droite */
+    .column {
         display: flex;
         flex-direction: column;
-        gap: 25px; /* Même gap que le reste du site */
+        gap: 25px;
     }
 
     .box-black {
@@ -64,7 +64,7 @@
         padding: 20px; 
         background-color: var(--card-bg); 
         border-radius: 10px;
-        flex-grow: 1; /* Prend toute la place dispo en hauteur */
+        flex-grow: 1; /* Permet au bloc de s'étirer pour aligner les boutons en bas */
     }
 
     .box-orange {
@@ -72,8 +72,9 @@
         flex-direction: column; 
         align-items: center; 
         justify-content: center; 
-        padding: 10px;
-        gap: 20px;
+        padding: 20px;
+        background-color: var(--card-bg);
+        border-radius: 10px; /* Ajout d'un léger arrondi pour cohérence */
     }
 
     .progress-container { position: relative; width: 160px; height: 160px; }
@@ -143,11 +144,12 @@
         font-size: 0.7rem;
         font-style: italic;
         color: #555;
+        margin-top: 10px;
     }
 
     @media (max-width: 768px) {
         .container { grid-template-columns: 1fr; }
-        .box-blue, .footer-credit, .right-column { grid-column: 1; }
+        .box-blue, .footer-credit { grid-column: 1; }
         .btn-social { max-width: 100%; }
     }
     </style>
@@ -156,7 +158,7 @@
 
     <div class="container">
         
-        <div style="display: flex; flex-direction: column; gap: 25px;">
+        <div class="column">
             <div class="box-black">
                 <img src="https://raw.githubusercontent.com/G4NON/Image-Cloud/main/Capture%20d'écran%202025-12-23%20002407.png" alt="Dodge Challenger Hellcat">
                 <div class="car-name">Dodge Challenger 6.2 V8 717 hp Hellcat SRT</div>
@@ -173,23 +175,22 @@
                         <small style="color: #888;">out of 56,000€</small>
                     </div>
                 </div>
-                <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
-                    <span>Follow my progress on Instagram</span>
-                </a>
             </div>
+
+            <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
+                <span>📸 Instagram Progress</span>
+            </a>
         </div>
 
-        <div class="right-column">
+        <div class="column">
             <div class="box-green">
                 <h2>My business ideas :</h2>
                 <p>Coming soon...</p>
             </div>
             
-            <div style="display: flex; justify-content: center;">
-                <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                    <span>Coming soon</span>
-                </a>
-            </div>
+            <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
+                <span>🎵 TikTok Incoming</span>
+            </a>
         </div>
 
         <div class="box-blue">
@@ -268,6 +269,5 @@
             setTimeout(updateCounter, 300);
         };
     </script>
-
 </body>
 </html>
