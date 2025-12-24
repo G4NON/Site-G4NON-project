@@ -26,7 +26,7 @@
         max-width: 900px;
         width: 100%;
         display: grid;
-        grid-template-columns: 1.2fr 1fr; /* Élargi un peu pour les 2 compteurs */
+        grid-template-columns: 1.2fr 1fr;
         gap: 25px;
         background: var(--bg-color);
         padding: 20px;
@@ -68,36 +68,45 @@
 
     .box-orange {
         display: flex; 
-        flex-direction: row; /* Aligné côte à côte */
+        flex-direction: row;
         align-items: center; 
         justify-content: space-around; 
-        padding: 20px;
+        padding: 30px 10px;
         background-color: var(--card-bg);
-        border-radius: 10px;
-        gap: 10px;
+        border-radius: 15px;
+        gap: 15px;
     }
 
     .counter-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
+        flex: 1;
     }
 
     .progress-container { position: relative; width: 130px; height: 130px; }
+    
     svg { transform: rotate(-90deg); }
-    .circle-bg { fill: none; stroke: #333; stroke-width: 10; }
+    
+    .circle-bg { fill: none; stroke: #2a2a2a; stroke-width: 12; }
+    
     .circle-progress {
-        fill: none; stroke: var(--accent-orange); stroke-width: 10;
-        stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440;
+        fill: none; 
+        stroke: var(--accent-orange); 
+        stroke-width: 12;
+        stroke-linecap: round; 
+        stroke-dasharray: 345.5; 
+        stroke-dashoffset: 345.5; 
         transition: stroke-dashoffset 1.5s ease-in-out;
     }
 
     .percentage-text {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+        width: 100%;
     }
-    .percentage-text span { font-size: 1.1rem; font-weight: bold; color: var(--accent-orange); }
-    .counter-label { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #888; }
+    .percentage-text span { font-size: 1.4rem; font-weight: bold; color: var(--accent-orange); }
+    .counter-label { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #bbb; letter-spacing: 1px; }
 
     .btn-social {
         display: inline-flex; 
@@ -118,11 +127,7 @@
         margin: 0 auto;
     }
     
-    .btn-social:hover { 
-        background-color: var(--accent-orange); 
-        transform: scale(1.05); 
-        box-shadow: 0 0 20px rgba(230, 126, 34, 0.4); 
-    }
+    .btn-social:hover { background-color: var(--accent-orange); transform: scale(1.05); }
 
     .box-blue {
         grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange);
@@ -132,9 +137,8 @@
     .year-accordion { margin-top: 15px; border-radius: 8px; overflow: hidden; }
     .year-header {
         background: #252525; padding: 15px; display: flex; justify-content: space-between;
-        cursor: pointer; transition: background 0.3s; align-items: center;
+        cursor: pointer; align-items: center;
     }
-    .year-header:hover { background: #333; }
     .year-title { font-weight: bold; color: #eee; }
     .year-total { color: var(--accent-orange); font-weight: bold; }
     .month-list { display: none; background: #111; padding: 10px 20px; }
@@ -150,22 +154,20 @@
         grid-column: 1 / 3;
         text-align: right;
         font-size: 0.7rem;
-        font-style: italic;
         color: #555;
         margin-top: 10px;
     }
 
     @media (max-width: 768px) {
         .container { grid-template-columns: 1fr; }
-        .box-orange { flex-direction: column; gap: 30px; }
-        .box-blue, .footer-credit { grid-column: 1; }
+        .box-orange { flex-direction: column; gap: 40px; }
+        .box-blue { grid-column: 1; }
     }
     </style>
 </head>
 <body>
 
     <div class="container">
-        
         <div class="column">
             <div class="box-black">
                 <img src="https://raw.githubusercontent.com/G4NON/Image-Cloud/main/Capture%20d'écran%202025-12-23%20002407.png" alt="Dodge Challenger Hellcat">
@@ -173,20 +175,6 @@
             </div>
 
             <div class="box-orange">
-                <div class="counter-wrapper">
-                    <div class="counter-label">Insurance</div>
-                    <div class="progress-container">
-                        <svg width="130" height="130">
-                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
-                            <circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle>
-                        </svg>
-                        <div class="percentage-text">
-                            <span id="amount-insurance">0</span>€<br>
-                            <small style="font-size: 0.6rem; color: #888;">/ 1 200€</small>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="counter-wrapper">
                     <div class="counter-label">Car Goal</div>
                     <div class="progress-container">
@@ -196,14 +184,28 @@
                         </svg>
                         <div class="percentage-text">
                             <span id="amount-car">0</span>€<br>
-                            <small style="font-size: 0.6rem; color: #888;">/ 56 000€</small>
+                            <small style="font-size: 0.7rem; color: #888;">/ 56 000€</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="counter-wrapper">
+                    <div class="counter-label">Insurance</div>
+                    <div class="progress-container">
+                        <svg width="130" height="130">
+                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
+                            <circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle>
+                        </svg>
+                        <div class="percentage-text">
+                            <span id="amount-insurance">0</span>€<br>
+                            <small style="font-size: 0.7rem; color: #888;">/ 1 200€</small>
                         </div>
                     </div>
                 </div>
             </div>
 
             <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
-                <span>Follow my progresse on Instagram</span>
+                <span>Follow my progress on Instagram</span>
             </a>
         </div>
 
@@ -212,9 +214,8 @@
                 <h2>My business ideas :</h2>
                 <p>Coming soon...</p>
             </div>
-            
             <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span>TikTok coming soon</span>
+                <span>Coming soon</span>
             </a>
         </div>
 
@@ -255,7 +256,6 @@
                 `;
                 container.innerHTML += yearHtml;
             }
-            updateCounter();
         }
 
         function toggleYear(year) {
@@ -279,14 +279,16 @@
                 if(totalEl) totalEl.innerText = yearlyTotals[year].toLocaleString() + " €";
             }
 
-            const circumference = 345;
+            const circumference = 345.5;
 
             const pcCar = Math.min((globalTotal / goalCar) * 100, 100);
-            document.getElementById('progress-car').style.strokeDashoffset = circumference - (pcCar / 100 * circumference);
+            const offsetCar = circumference - (pcCar / 100 * circumference);
+            document.getElementById('progress-car').style.strokeDashoffset = offsetCar;
             document.getElementById('amount-car').innerText = globalTotal.toLocaleString();
 
             const pcInsurance = Math.min((globalTotal / goalInsurance) * 100, 100);
-            document.getElementById('progress-insurance').style.strokeDashoffset = circumference - (pcInsurance / 100 * circumference);
+            const offsetInsurance = circumference - (pcInsurance / 100 * circumference);
+            document.getElementById('progress-insurance').style.strokeDashoffset = offsetInsurance;
             document.getElementById('amount-insurance').innerText = Math.min(globalTotal, goalInsurance).toLocaleString();
         }
 
