@@ -53,14 +53,25 @@
         padding: 10px 5px 0 5px; text-transform: uppercase; letter-spacing: 1px;
     }
 
+    /* Boîte Verte - Business Ideas */
     .box-green {
         grid-column: 2; grid-row: 1 / 3;
         border: var(--border-width) solid var(--accent-orange);
         padding: 20px; background-color: var(--card-bg); border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Pousse le bouton vers le bas */
+        align-items: center;
     }
 
+    /* Boîte Orange - Compteur */
     .box-orange {
-        display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        padding: 10px;
+        gap: 20px; /* Espace entre le cercle et le bouton */
     }
 
     .progress-container { position: relative; width: 160px; height: 160px; }
@@ -77,30 +88,24 @@
     }
     .percentage-text span { font-size: 1.5rem; font-weight: bold; color: var(--accent-orange); }
 
-    .social-area { 
-        grid-column: 1 / 3; 
-        display: flex; 
-        justify-content: center; 
-        gap: 100px; 
-        padding: 10px 0;
-        flex-wrap: wrap;
-    }
-
+    /* Style des Boutons Sociaux */
     .btn-social {
         display: inline-flex; 
         align-items: center; 
         background-color: transparent;
         border: 2px solid var(--accent-orange); 
         color: white; 
-        padding: 12px 20px;
+        padding: 10px 15px;
         border-radius: 50px; 
         text-decoration: none; 
         font-weight: bold; 
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         transition: all 0.3s ease; 
-        gap: 10px;
-        min-width: 180px;
+        gap: 8px;
+        width: 100%; /* S'adapte à la largeur du parent */
+        max-width: 220px;
         justify-content: center;
+        text-align: center;
     }
     
     .btn-social:hover { 
@@ -143,13 +148,13 @@
 
     @media (max-width: 768px) {
         .container { grid-template-columns: 1fr; gap: 15px; padding: 15px; }
-        .box-black, .box-green, .box-orange, .social-area, .box-blue, .footer-credit { grid-column: 1; grid-row: auto; }
+        .box-black, .box-green, .box-orange, .box-blue, .footer-credit { grid-column: 1; grid-row: auto; }
         .box-black { height: auto; }
         .box-green { order: 3; }
-        .social-area { order: 4; }
+        .box-orange { order: 2; }
         .box-blue { order: 5; }
         .footer-credit { order: 6; }
-        .btn-social { width: 100%; }
+        .btn-social { max-width: 100%; }
     }
     </style>
 </head>
@@ -173,19 +178,18 @@
                     <small style="color: #888;">out of 56,000€</small>
                 </div>
             </div>
-        </div>
-
-        <div class="box-green">
-            <h2>My business ideas :</h2>
-            <p>Coming soon...</p>
-        </div>
-
-        <div class="social-area">
             <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
                 <span>Follow my progress on Instagram</span>
             </a>
+        </div>
+
+        <div class="box-green">
+            <div>
+                <h2>My business ideas :</h2>
+                <p>Coming soon...</p>
+            </div>
             <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span> Incoming </span>
+                <span>Incoming</span>
             </a>
         </div>
 
@@ -241,7 +245,8 @@
 
             allGains.forEach(cell => {
                 const year = cell.getAttribute('data-year');
-                const val = parseFloat(cell.innerText.replace(/\s/g, '').replace('€', '')) || 0;
+                const text = cell.innerText.replace(/\s/g, '').replace('€', '');
+                const val = parseFloat(text) || 0;
                 globalTotal += val;
                 yearlyTotals[year] = (yearlyTotals[year] || 0) + val;
             });
