@@ -45,6 +45,9 @@
     }
 
     .column { display: flex; flex-direction: column; gap: 25px; }
+    
+    /* Force l'alignement vertical entre les deux colonnes */
+    .col-left { justify-content: space-between; }
 
     .box-black {
         border: var(--border-width) solid #444; border-radius: 40px;
@@ -62,11 +65,12 @@
     .box-green {
         border: var(--border-width) solid var(--accent-orange); padding: 20px; 
         background-color: var(--card-bg); border-radius: 15px; display: flex; flex-direction: column;
+        height: 100%; /* Permet l'étirement pour l'alignement */
     }
 
     .content-box {
         background-color: var(--inner-box-bg); border-radius: 12px;
-        padding: 15px; min-height: 120px; border: 1px solid #444;
+        padding: 15px; min-height: 120px; border: 1px solid #444; flex-grow: 1;
     }
 
     .box-orange {
@@ -87,14 +91,14 @@
     .percentage-text span { font-size: 1.4rem; font-weight: bold; color: var(--accent-orange); }
     .counter-label { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #bbb; letter-spacing: 1px; }
 
-    /* Correction ici : alignement au centre et taille auto pour les boutons */
-    .social-container { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; }
+    /* Boutons agrandis et conteneur aligné en bas */
+    .social-container { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; margin-top: auto; }
     .btn-social {
         display: inline-flex; align-items: center; border: 2px solid var(--accent-orange); 
-        color: white; padding: 12px 15px; border-radius: 50px; text-decoration: none; 
-        font-weight: bold; font-size: 0.8rem; transition: 0.3s; justify-content: center;
-        width: auto; /* Retour à la taille d'origine basée sur le texte */
-        min-width: 180px; /* Assure une base propre */
+        color: white; padding: 14px 25px; /* Agrandit un peu la taille */
+        border-radius: 50px; text-decoration: none; 
+        font-weight: bold; font-size: 0.85rem; transition: 0.3s; justify-content: center;
+        width: auto; min-width: 210px; /* Un peu plus large pour l'impact */
     }
     .btn-social:hover { background-color: var(--accent-orange); transform: scale(1.05); }
 
@@ -132,7 +136,7 @@
     </div>
 
     <div class="container">
-        <div class="column">
+        <div class="column col-left">
             <div class="box-black">
                 <img src="https://raw.githubusercontent.com/G4NON/Image-Cloud/main/Capture%20d'écran%202025-12-23%20002407.png" alt="Dodge Challenger Hellcat">
                 <div class="car-name">Dodge Challenger 6.2 V8 Hellcat</div>
@@ -142,28 +146,15 @@
                 <div class="counter-wrapper">
                     <div class="counter-label">Car Goal</div>
                     <div class="progress-container">
-                        <svg width="130" height="130">
-                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
-                            <circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle>
-                        </svg>
-                        <div class="percentage-text">
-                            <span id="amount-car">0</span>€<br>
-                            <small style="font-size: 0.7rem; color: #888;">/ 56 000€</small>
-                        </div>
+                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
+                        <div class="percentage-text"><span id="amount-car">0</span>€<br><small style="font-size: 0.7rem; color: #888;">/ 56 000€</small></div>
                     </div>
                 </div>
-
                 <div class="counter-wrapper">
                     <div class="counter-label">Insurance</div>
                     <div class="progress-container">
-                        <svg width="130" height="130">
-                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
-                            <circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle>
-                        </svg>
-                        <div class="percentage-text">
-                            <span id="amount-insurance">0</span>€<br>
-                            <small style="font-size: 0.7rem; color: #888;">/ 1 200€</small>
-                        </div>
+                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
+                        <div class="percentage-text"><span id="amount-insurance">0</span>€<br><small style="font-size: 0.7rem; color: #888;">/ 1 200€</small></div>
                     </div>
                 </div>
             </div>
