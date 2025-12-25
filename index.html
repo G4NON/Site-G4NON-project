@@ -176,16 +176,15 @@
     <div class="footer-wrapper"><span class="footer-credit">by G4NON</span></div>
 
     <script>
-        // CHIFFRES À 0 PAR DÉFAUT
         const dataTracker = {
-            2026: {
-                gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-                resumes: ["", "", "", "", "", "", "", "", "", "", "", ""]
-            },
-            2027: {
-                gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                resumes: ["", "", "", "", "", "", "", "", "", "", "", ""]
-            }
+            2026: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2027: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2028: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2029: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2030: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2031: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2032: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2033: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] }
         };
 
         const goalCar = 56000;
@@ -196,7 +195,9 @@
             const container = document.getElementById('year-container');
             let globalTotal = 0;
 
-            for (const year in dataTracker) {
+            const sortedYears = Object.keys(dataTracker).sort();
+
+            for (const year of sortedYears) {
                 let yearlyTotal = dataTracker[year].gains.reduce((a, b) => a + b, 0);
                 globalTotal += yearlyTotal;
 
