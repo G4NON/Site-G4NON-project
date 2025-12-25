@@ -221,7 +221,7 @@
             <h2 style="color: var(--accent-orange); margin-top: 0;">Future ideas for the site</h2>
             <ul class="ideas-list">
                 <li class="idea-item"><strong>Dark Mode Toggle:</strong> Add a switch to alternate between different theme accents.</li>
-                <li class="idea-item"><strong>Insurrance counter : </strong> the fact that the insurrance and the car goal are no connected</li>
+                <li class="idea-item"><strong>Insurance counter : </strong> the fact that the insurrance and the car goal are no connected</li>
             </ul>
         </div>
     </div>
@@ -262,7 +262,7 @@
                         <div class="month-list">
                             ${months.map((m, idx) => {
                                 const gain = dataTracker[year].gains[idx] || 0;
-                                const resume = dataTracker[year].resumes[idx] || "Aucun résumé pour ce mois.";
+                                const resume = dataTracker[year].resumes[idx] || "No summary for this month.";
                                 return `
                                 <div class="month-item" id="m-${year}-${idx}">
                                     <div class="month-header" onclick="toggleMonth('${year}-${idx}')">
