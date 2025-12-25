@@ -46,7 +46,6 @@
 
     .column { display: flex; flex-direction: column; gap: 25px; }
     
-    /* Force l'alignement vertical entre les deux colonnes */
     .col-left { justify-content: space-between; }
 
     .box-black {
@@ -65,9 +64,8 @@
     .box-green {
         border: var(--border-width) solid var(--accent-orange); padding: 20px; 
         background-color: var(--card-bg); border-radius: 15px; display: flex; flex-direction: column;
-        height: 100%; /* Permet l'étirement pour l'alignement */
+        height: 100%; 
     }
-
 
     .box-orange {
         display: flex; flex-direction: row; align-items: center; justify-content: space-around; 
@@ -87,18 +85,41 @@
     .percentage-text span { font-size: 1.4rem; font-weight: bold; color: var(--accent-orange); }
     .counter-label { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #bbb; letter-spacing: 1px; }
 
-    /* Boutons agrandis et conteneur aligné en bas */
     .social-container { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; margin-top: auto; }
     .btn-social {
         display: inline-flex; align-items: center; border: 2px solid var(--accent-orange); 
-        color: white; padding: 14px 25px; /* Agrandit un peu la taille */
+        color: white; padding: 14px 25px; 
         border-radius: 50px; text-decoration: none; 
         font-weight: bold; font-size: 0.85rem; transition: 0.3s; justify-content: center;
-        width: auto; min-width: 210px; /* Un peu plus large pour l'impact */
+        width: auto; min-width: 210px; 
     }
     .btn-social:hover { background-color: var(--accent-orange); transform: scale(1.05); }
 
-    .box-blue { grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange); padding: 25px; background-color: var(--card-bg); border-radius: 10px; }
+    .box-blue { grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange); padding: 25px; background-color: var(--card-bg); border-radius: 10px; margin-bottom: 25px; }
+
+    /* New Ideas Block Style */
+    .box-ideas { 
+        grid-column: 1 / 3; 
+        border: 2px dashed #444; 
+        padding: 25px; 
+        background-color: #111; 
+        border-radius: 15px; 
+    }
+    .ideas-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+    .idea-item {
+        background: var(--inner-box-bg);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid var(--accent-orange);
+        font-size: 0.9rem;
+    }
 
     .year-accordion { margin-top: 15px; border-radius: 8px; overflow: hidden; }
     .year-header { background: #252525; padding: 15px; display: flex; justify-content: space-between; cursor: pointer; align-items: center; }
@@ -122,22 +143,21 @@
     .footer-wrapper { width: 100%; max-width: 900px; text-align: right; padding-bottom: 30px; }
     .footer-credit { font-size: 0.8rem; color: #555; }
 
-    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .box-orange { flex-direction: column; gap: 40px; } .box-blue { grid-column: 1; } }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .box-orange { flex-direction: column; gap: 40px; } .box-blue, .box-ideas { grid-column: 1; } }
 
     .content-box {
-    background-color: var(--inner-box-bg);
-    border-radius: 12px;
-    padding: 15px;
-    padding-top: 0px;   /* ⬅️ plus haut */
-    min-height: 120px;
-    border: 1px solid #444;
-    flex-grow: 1;
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: left;
-}
+        background-color: var(--inner-box-bg);
+        border-radius: 12px;
+        padding: 15px;
+        padding-top: 0px;
+        min-height: 120px;
+        border: 1px solid #444;
+        flex-grow: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
     
     </style>
 </head>
@@ -195,6 +215,16 @@
         <div class="box-blue">
             <h2>Annual & Monthly Tracking</h2>
             <div id="year-container" class="year-accordion"></div>
+        </div>
+
+        <div class="box-ideas">
+            <h2 style="color: var(--accent-orange); margin-top: 0;">🚀 Future ideas for the site</h2>
+            <ul class="ideas-list">
+                <li class="idea-item"><strong>Dark Mode Toggle:</strong> Add a switch to alternate between different theme accents.</li>
+                <li class="idea-item"><strong>Live API:</strong> Integrate a real-time currency or stock tracker for my savings.</li>
+                <li class="idea-item"><strong>Interactive Map:</strong> Visualize the journey or road trips planned with the car.</li>
+                <li class="idea-item"><strong>New feature:</strong> [Your next big idea here...]</li>
+            </ul>
         </div>
     </div>
 
