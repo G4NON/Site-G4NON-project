@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,7 +96,7 @@
     .month-list { display: none; background: #111; padding: 0 15px; }
     .active .month-list { display: block; }
 
-    /* ACCORDEON MOIS */
+    /* ACCORDEON MOIS (CLIQUABLE) */
     .month-item { border-bottom: 1px solid #222; }
     .month-header {
         display: flex; justify-content: space-between; padding: 12px 5px;
@@ -107,16 +107,17 @@
     
     .gain-val { color: var(--accent-orange); font-weight: bold; }
 
+    /* FENETRE DEROULANTE RESUME */
     .month-content { 
         max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
         display: flex; flex-direction: column;
     }
-    .month-item.open .month-content { max-height: 300px; padding-bottom: 15px; }
+    .month-item.open .month-content { max-height: 400px; padding-bottom: 15px; }
 
-    .month-notes {
-        background: #1a1a1a; border: 1px solid #444; border-radius: 8px;
-        color: #ccc; padding: 10px; font-family: inherit; font-size: 0.85rem;
-        min-height: 60px; line-height: 1.4;
+    .month-summary-box {
+        background: #1a1a1a; border-left: 3px solid var(--accent-orange);
+        color: #ccc; padding: 12px; font-family: inherit; font-size: 0.9rem;
+        line-height: 1.5; border-radius: 0 8px 8px 0;
     }
 
     .footer-wrapper { width: 100%; max-width: 900px; text-align: right; padding-bottom: 30px; }
@@ -171,18 +172,25 @@
 
     <script>
         // ==========================================
-        //  Modification des données
+        //  MODIFIE TES CHIFFRES ET RÉSUMÉS ICI
         // ==========================================
         const dataTracker = {
             2026: {
-                gains: ["---", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Janvier à Décembre
-                notes: ["Recherche de boulot", "", "", "", "", "", "", "", "", "", "", ""]
+                // Montants pour chaque mois (Janvier à Décembre)
+                gains: [500, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                
+                // RÉSUMÉS : Écris ton texte entre les guillemets ci-dessous
+                resumes: [
+                    "Résumé de Janvier : Lancement du projet G4NON. Objectif fixé à 56k€.", // Janvier
+                    "Résumé de Février : Analyse du marché et premières économies.",      // Février
+                    "Pas de résumé pour Mars.",                                           // Mars
+                    "", "", "", "", "", "", "", "", "" // Autres mois
+                ]
             },
             2027: {
                 gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                notes: ["", "", "", "", "", "", "", "", "", "", "", ""]
+                resumes: ["", "", "", "", "", "", "", "", "", "", "", ""]
             }
-            // Si je veux rajouter pour les années futur, juste rajout les
         };
 
         const goalCar = 56000;
@@ -206,7 +214,7 @@
                         <div class="month-list">
                             ${months.map((m, idx) => {
                                 const gain = dataTracker[year].gains[idx] || 0;
-                                const note = dataTracker[year].notes[idx] || "Aucune note pour ce mois.";
+                                const resume = dataTracker[year].resumes[idx] || "Aucun résumé disponible pour ce mois.";
                                 return `
                                 <div class="month-item" id="m-${year}-${idx}">
                                     <div class="month-header" onclick="toggleMonth('${year}-${idx}')">
@@ -214,7 +222,7 @@
                                         <span class="gain-val">${gain.toLocaleString()} €</span>
                                     </div>
                                     <div class="month-content">
-                                        <div class="month-notes">${note}</div>
+                                        <div class="month-summary-box">${resume}</div>
                                     </div>
                                 </div>
                             `}).join('')}
