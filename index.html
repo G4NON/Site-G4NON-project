@@ -18,241 +18,117 @@
     }
 
     #loader-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--bg-color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s;
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: var(--bg-color); display: flex; justify-content: center;
+        align-items: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s;
     }
 
-    .dots-container {
-        display: flex;
-        gap: 8px;
-    }
-
+    .dots-container { display: flex; gap: 8px; }
     .dot {
-        width: 15px;
-        height: 15px;
-        background-color: var(--accent-orange);
-        border-radius: 50%;
-        animation: pulse 1.4s infinite ease-in-out both;
+        width: 15px; height: 15px; background-color: var(--accent-orange);
+        border-radius: 50%; animation: pulse 1.4s infinite ease-in-out both;
     }
-
     .dot:nth-child(1) { animation-delay: -0.32s; }
     .dot:nth-child(2) { animation-delay: -0.16s; }
-
-    @keyframes pulse {
-        0%, 80%, 100% { transform: scale(0); }
-        40% { transform: scale(1.0); }
-    }
-
-    .loader-hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
+    @keyframes pulse { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+    .loader-hidden { opacity: 0; visibility: hidden; }
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        margin: 0;
+        display: flex; flex-direction: column; align-items: center;
+        padding: 20px; background-color: var(--bg-color); color: var(--text-color); margin: 0;
     }
 
     .container {
-        max-width: 900px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 25px;
-        background: var(--bg-color);
-        padding: 20px;
-        box-sizing: border-box;
+        max-width: 900px; width: 100%; display: grid;
+        grid-template-columns: 1.2fr 1fr; gap: 25px; padding: 20px; box-sizing: border-box;
     }
 
-    .column {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
+    .column { display: flex; flex-direction: column; gap: 25px; }
 
     .box-black {
-        border: var(--border-width) solid #444;
-        border-radius: 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--card-bg);
-        overflow: hidden;
-        padding-bottom: 15px;
+        border: var(--border-width) solid #444; border-radius: 40px;
+        display: flex; flex-direction: column; align-items: center;
+        background-color: var(--card-bg); overflow: hidden; padding-bottom: 15px;
     }
-    
-    .box-black img { 
-        width: 100%; 
-        height: 160px; 
-        object-fit: cover; 
-        object-position: top;
-    }
-
-    .car-name {
-        color: white; font-size: 0.85rem; font-weight: bold; text-align: center;
-        padding: 10px 5px 0 5px; text-transform: uppercase; letter-spacing: 1px;
-    }
+    .box-black img { width: 100%; height: 160px; object-fit: cover; }
+    .car-name { color: white; font-size: 0.85rem; font-weight: bold; padding: 10px; text-transform: uppercase; }
 
     .box-green {
-        border: var(--border-width) solid var(--accent-orange);
-        padding: 20px; 
-        background-color: var(--card-bg); 
-        border-radius: 15px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .box-green h2 {
-        margin-top: 0;
-        margin-bottom: 15px;
-        font-size: 1.2rem;
+        border: var(--border-width) solid var(--accent-orange); padding: 20px; 
+        background-color: var(--card-bg); border-radius: 15px; display: flex; flex-direction: column;
     }
 
     .content-box {
-        background-color: var(--inner-box-bg);
-        border-radius: 12px;
-        padding: 15px; 
-        text-align: left; 
-        flex-grow: 1;
-        min-height: 120px; 
-        border: 1px solid #444;
-    }
-
-    .content-box p {
-        margin: 0;
-        color: #aaa;
-        font-style: italic;
-        font-size: 0.9rem;
+        background-color: var(--inner-box-bg); border-radius: 12px;
+        padding: 15px; min-height: 120px; border: 1px solid #444;
     }
 
     .box-orange {
-        display: flex; 
-        flex-direction: row;
-        align-items: center; 
-        justify-content: space-around; 
-        padding: 30px 10px;
-        background-color: var(--card-bg);
-        border-radius: 15px;
-        gap: 15px;
+        display: flex; justify-content: space-around; padding: 30px 10px;
+        background-color: var(--card-bg); border-radius: 15px; gap: 15px;
     }
 
-    .counter-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        flex: 1;
-    }
-
+    .counter-wrapper { display: flex; flex-direction: column; align-items: center; flex: 1; }
     .progress-container { position: relative; width: 130px; height: 130px; }
     svg { transform: rotate(-90deg); }
     .circle-bg { fill: none; stroke: #2a2a2a; stroke-width: 12; }
-    
     .circle-progress {
-        fill: none; 
-        stroke: var(--accent-orange); 
-        stroke-width: 12;
-        stroke-linecap: round; 
-        stroke-dasharray: 345.5; 
-        stroke-dashoffset: 345.5; 
+        fill: none; stroke: var(--accent-orange); stroke-width: 12;
+        stroke-linecap: round; stroke-dasharray: 345.5; stroke-dashoffset: 345.5;
         transition: stroke-dashoffset 1.5s ease-in-out;
     }
-
-    .percentage-text {
-        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;
-        width: 100%;
-    }
+    .percentage-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; }
     .percentage-text span { font-size: 1.4rem; font-weight: bold; color: var(--accent-orange); }
-    .counter-label { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #bbb; letter-spacing: 1px; }
 
     .btn-social {
-        display: inline-flex; 
-        align-items: center; 
-        background-color: transparent;
-        border: 2px solid var(--accent-orange); 
-        color: white; 
-        padding: 12px 15px;
-        border-radius: 50px; 
-        text-decoration: none; 
-        font-weight: bold; 
-        font-size: 0.8rem;
-        transition: all 0.3s ease; 
-        gap: 8px;
-        width: 100%;
-        max-width: 250px;
-        justify-content: center;
-        margin: 0 auto;
+        display: inline-flex; align-items: center; border: 2px solid var(--accent-orange); 
+        color: white; padding: 12px 15px; border-radius: 50px; text-decoration: none; 
+        font-weight: bold; font-size: 0.8rem; transition: 0.3s; justify-content: center;
     }
-    
     .btn-social:hover { background-color: var(--accent-orange); transform: scale(1.05); }
 
-    .box-blue {
-        grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange);
-        padding: 25px; background-color: var(--card-bg); border-radius: 10px;
-    }
+    .box-blue { grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange); padding: 25px; background-color: var(--card-bg); border-radius: 10px; }
 
+    /* ACCORDEON ANNEE */
     .year-accordion { margin-top: 15px; border-radius: 8px; overflow: hidden; }
-    .year-header {
-        background: #252525; padding: 15px; display: flex; justify-content: space-between;
+    .year-header { background: #252525; padding: 15px; display: flex; justify-content: space-between; cursor: pointer; }
+    .month-list { display: none; background: #111; padding: 0 15px; }
+    .active .month-list { display: block; }
+
+    /* ACCORDEON MOIS */
+    .month-item { border-bottom: 1px solid #222; }
+    .month-header {
+        display: flex; justify-content: space-between; padding: 12px 5px;
         cursor: pointer; align-items: center;
     }
-    .year-title { font-weight: bold; color: #eee; }
-    .year-total { color: var(--accent-orange); font-weight: bold; }
-    .month-list { display: none; background: #111; padding: 10px 20px; }
-    .month-row {
-        display: flex; justify-content: space-between; padding: 8px 0;
-        border-bottom: 1px solid #222; font-size: 0.9rem; color: #ccc;
+    .month-name::before { content: '▶'; font-size: 0.7rem; margin-right: 8px; display: inline-block; transition: 0.2s; }
+    .month-item.open .month-name::before { transform: rotate(90deg); color: var(--accent-orange); }
+    
+    .gain-val { color: var(--accent-orange); font-weight: bold; }
+
+    .month-content { 
+        max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+        display: flex; flex-direction: column;
+    }
+    .month-item.open .month-content { max-height: 300px; padding-bottom: 15px; }
+
+    .month-notes {
+        background: #1a1a1a; border: 1px solid #444; border-radius: 8px;
+        color: #ccc; padding: 10px; font-family: inherit; font-size: 0.85rem;
+        min-height: 60px; line-height: 1.4;
     }
 
-    .active .month-list { display: block; }
-    .active .year-header { border-left: 4px solid var(--accent-orange); }
+    .footer-wrapper { width: 100%; max-width: 900px; text-align: right; padding-bottom: 30px; }
+    .footer-credit { font-size: 0.8rem; color: #555; }
 
-    .footer-wrapper {
-        max-width: 900px;
-        width: 100%;
-        padding: 10px 20px 30px 20px;
-        box-sizing: border-box;
-        text-align: right; 
-    }
-
-    .footer-credit {
-        font-size: 0.8rem;
-        font-style: italic;
-        color: #555;
-    }
-
-    @media (max-width: 768px) {
-        .container { grid-template-columns: 1fr; }
-        .box-orange { flex-direction: column; gap: 40px; }
-        .box-blue { grid-column: 1; }
-    }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .box-blue { grid-column: 1; } }
     </style>
 </head>
 <body>
 
     <div id="loader-wrapper">
-        <div class="dots-container">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+        <div class="dots-container"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
     </div>
 
     <div class="container">
@@ -264,56 +140,25 @@
 
             <div class="box-orange">
                 <div class="counter-wrapper">
-                    <div class="counter-label">Car Goal</div>
                     <div class="progress-container">
-                        <svg width="130" height="130">
-                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
-                            <circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle>
-                        </svg>
-                        <div class="percentage-text">
-                            <span id="amount-car">0</span>€<br>
-                            <small style="font-size: 0.7rem; color: #888;">/ 56 000€</small>
-                        </div>
+                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
+                        <div class="percentage-text"><span id="amount-car">0</span>€<br><small style="font-size: 0.6rem; color: #888;">GOAL CAR</small></div>
                     </div>
                 </div>
-
                 <div class="counter-wrapper">
-                    <div class="counter-label">Insurance</div>
                     <div class="progress-container">
-                        <svg width="130" height="130">
-                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
-                            <circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle>
-                        </svg>
-                        <div class="percentage-text">
-                            <span id="amount-insurance">0</span>€<br>
-                            <small style="font-size: 0.7rem; color: #888;">/ 1 200€</small>
-                        </div>
+                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
+                        <div class="percentage-text"><span id="amount-insurance">0</span>€<br><small style="font-size: 0.6rem; color: #888;">INSURANCE</small></div>
                     </div>
                 </div>
             </div>
 
-            <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">
-                <span>Follow my progress on Instagram</span>
-            </a>
-            <a href="https://www.tiktok.com/@votre_compte" target="_blank" class="btn-social">
-                <span>Coming soon ...</span>
-            </a>
+            <a href="https://www.instagram.com/g4non___/" target="_blank" class="btn-social">Follow progress</a>
         </div>
 
         <div class="column">
-            <div class="box-green">
-                <h2>Quick summary :</h2>
-                <div class="content-box">
-                    <p>Coming soon ...</p>
-                </div>
-            </div>
-            
-            <div class="box-green">
-                <h2>My business ideas :</h2>
-                <div class="content-box">
-                    <p>Coming soon ...</p>
-                </div>
-            </div>
+            <div class="box-green"><h2>Quick summary :</h2><div class="content-box"><p>Coming soon ...</p></div></div>
+            <div class="box-green"><h2>Business ideas :</h2><div class="content-box"><p>Coming soon ...</p></div></div>
         </div>
 
         <div class="box-blue">
@@ -322,79 +167,81 @@
         </div>
     </div>
 
-    <div class="footer-wrapper">
-        <span class="footer-credit">by G4NON</span>
-    </div>
+    <div class="footer-wrapper"><span class="footer-credit">by G4NON</span></div>
 
     <script>
+        // ==========================================
+        //  MODIFIE TES CHIFFRES ET TEXTES ICI
+        // ==========================================
+        const dataTracker = {
+            2026: {
+                gains: [500, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Janvier à Décembre
+                notes: ["Début du projet, premiers bénéfices !", "Petit mois calme.", "", "", "", "", "", "", "", "", "", ""]
+            },
+            2027: {
+                gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                notes: ["", "", "", "", "", "", "", "", "", "", "", ""]
+            }
+            // Tu peux ajouter 2028, 2029, etc. sur le même modèle
+        };
+
         const goalCar = 56000;
         const goalInsurance = 1200;
-        const startYear = 2026;
-        const yearsToTrack = 8;
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         function initTracker() {
             const container = document.getElementById('year-container');
-            for (let i = 0; i < yearsToTrack; i++) {
-                let currentYear = startYear + i;
+            let globalTotal = 0;
+
+            for (const year in dataTracker) {
+                let yearlyTotal = dataTracker[year].gains.reduce((a, b) => a + b, 0);
+                globalTotal += yearlyTotal;
+
                 let yearHtml = `
-                    <div class="year-item" id="year-${currentYear}">
-                        <div class="year-header" onclick="toggleYear(${currentYear})">
-                            <span class="year-title">Year ${currentYear}</span>
-                            <span class="year-total" id="total-${currentYear}">0 €</span>
+                    <div class="year-item" id="year-${year}">
+                        <div class="year-header" onclick="toggleYear(${year})">
+                            <span class="year-title">Year ${year}</span>
+                            <span class="year-total">${yearlyTotal.toLocaleString()} €</span>
                         </div>
                         <div class="month-list">
-                            ${months.map(m => `
-                                <div class="month-row">
-                                    <span>${m}</span>
-                                    <span class="gain-val" data-year="${currentYear}">---</span>
+                            ${months.map((m, idx) => {
+                                const gain = dataTracker[year].gains[idx] || 0;
+                                const note = dataTracker[year].notes[idx] || "Aucune note pour ce mois.";
+                                return `
+                                <div class="month-item" id="m-${year}-${idx}">
+                                    <div class="month-header" onclick="toggleMonth('${year}-${idx}')">
+                                        <span class="month-name">${m}</span>
+                                        <span class="gain-val">${gain.toLocaleString()} €</span>
+                                    </div>
+                                    <div class="month-content">
+                                        <div class="month-notes">${note}</div>
+                                    </div>
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
                     </div>
                 `;
                 container.innerHTML += yearHtml;
             }
+            updateCounters(globalTotal);
         }
 
-        function toggleYear(year) {
-            document.getElementById(`year-${year}`).classList.toggle('active');
-        }
+        function toggleYear(year) { document.getElementById(`year-${year}`).classList.toggle('active'); }
+        function toggleMonth(id) { document.getElementById(`m-${id}`).classList.toggle('open'); }
 
-        function updateCounter() {
-            const allGains = document.querySelectorAll('.gain-val');
-            let globalTotal = 0;
-            let yearlyTotals = {};
-
-            allGains.forEach(cell => {
-                const year = cell.getAttribute('data-year');
-                const val = parseFloat(cell.innerText.replace(/\s/g, '').replace('€', '')) || 0;
-                globalTotal += val;
-                yearlyTotals[year] = (yearlyTotals[year] || 0) + val;
-            });
-
-            for (let year in yearlyTotals) {
-                const totalEl = document.getElementById(`total-${year}`);
-                if(totalEl) totalEl.innerText = yearlyTotals[year].toLocaleString() + " €";
-            }
-
-            const circumference = 345.5;
-
-            const pcCar = Math.min((globalTotal / goalCar) * 100, 100);
-            document.getElementById('progress-car').style.strokeDashoffset = circumference - (pcCar / 100 * circumference);
-            document.getElementById('amount-car').innerText = globalTotal.toLocaleString();
-
-            const pcInsurance = Math.min((globalTotal / goalInsurance) * 100, 100);
-            document.getElementById('progress-insurance').style.strokeDashoffset = circumference - (pcInsurance / 100 * circumference);
-            document.getElementById('amount-insurance').innerText = Math.min(globalTotal, goalInsurance).toLocaleString();
+        function updateCounters(total) {
+            const circ = 345.5;
+            document.getElementById('progress-car').style.strokeDashoffset = circ - (Math.min(total/goalCar, 1) * circ);
+            document.getElementById('amount-car').innerText = total.toLocaleString();
+            document.getElementById('progress-insurance').style.strokeDashoffset = circ - (Math.min(total/goalInsurance, 1) * circ);
+            document.getElementById('amount-insurance').innerText = Math.min(total, goalInsurance).toLocaleString();
         }
 
         window.onload = () => {
             initTracker();
             setTimeout(() => {
                 document.getElementById('loader-wrapper').classList.add('loader-hidden');
-                updateCounter();
-            }, 1500);
+            }, 1000);
         };
     </script>
 </body>
