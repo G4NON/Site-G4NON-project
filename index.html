@@ -65,11 +65,11 @@
     }
 
     .box-orange {
-        display: flex; justify-content: space-around; padding: 30px 10px;
-        background-color: var(--card-bg); border-radius: 15px; gap: 15px;
+        display: flex; flex-direction: row; align-items: center; justify-content: space-around; 
+        padding: 30px 10px; background-color: var(--card-bg); border-radius: 15px; gap: 15px;
     }
 
-    .counter-wrapper { display: flex; flex-direction: column; align-items: center; flex: 1; }
+    .counter-wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; flex: 1; }
     .progress-container { position: relative; width: 130px; height: 130px; }
     svg { transform: rotate(-90deg); }
     .circle-bg { fill: none; stroke: #2a2a2a; stroke-width: 12; }
@@ -80,6 +80,7 @@
     }
     .percentage-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; }
     .percentage-text span { font-size: 1.4rem; font-weight: bold; color: var(--accent-orange); }
+    .counter-label { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: #bbb; letter-spacing: 1px; }
 
     .btn-social {
         display: inline-flex; align-items: center; border: 2px solid var(--accent-orange); 
@@ -90,40 +91,29 @@
 
     .box-blue { grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange); padding: 25px; background-color: var(--card-bg); border-radius: 10px; }
 
-    /* ACCORDEON ANNEE */
     .year-accordion { margin-top: 15px; border-radius: 8px; overflow: hidden; }
-    .year-header { background: #252525; padding: 15px; display: flex; justify-content: space-between; cursor: pointer; }
+    .year-header { background: #252525; padding: 15px; display: flex; justify-content: space-between; cursor: pointer; align-items: center; }
+    .year-title { font-weight: bold; color: #eee; }
+    .year-total { color: var(--accent-orange); font-weight: bold; }
     .month-list { display: none; background: #111; padding: 0 15px; }
     .active .month-list { display: block; }
 
-    /* ACCORDEON MOIS (CLIQUABLE) */
     .month-item { border-bottom: 1px solid #222; }
-    .month-header {
-        display: flex; justify-content: space-between; padding: 12px 5px;
-        cursor: pointer; align-items: center;
-    }
+    .month-header { display: flex; justify-content: space-between; padding: 12px 5px; cursor: pointer; align-items: center; }
     .month-name::before { content: '▶'; font-size: 0.7rem; margin-right: 8px; display: inline-block; transition: 0.2s; }
     .month-item.open .month-name::before { transform: rotate(90deg); color: var(--accent-orange); }
     
     .gain-val { color: var(--accent-orange); font-weight: bold; }
 
-    /* FENETRE DEROULANTE RESUME */
-    .month-content { 
-        max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
-        display: flex; flex-direction: column;
-    }
+    .month-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; display: flex; flex-direction: column; }
     .month-item.open .month-content { max-height: 400px; padding-bottom: 15px; }
 
-    .month-summary-box {
-        background: #1a1a1a; border-left: 3px solid var(--accent-orange);
-        color: #ccc; padding: 12px; font-family: inherit; font-size: 0.9rem;
-        line-height: 1.5; border-radius: 0 8px 8px 0;
-    }
+    .month-summary-box { background: #1a1a1a; border-left: 3px solid var(--accent-orange); color: #ccc; padding: 12px; font-size: 0.9rem; line-height: 1.5; border-radius: 0 8px 8px 0; }
 
     .footer-wrapper { width: 100%; max-width: 900px; text-align: right; padding-bottom: 30px; }
     .footer-credit { font-size: 0.8rem; color: #555; }
 
-    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .box-blue { grid-column: 1; } }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .box-orange { flex-direction: column; gap: 40px; } .box-blue { grid-column: 1; } }
     </style>
 </head>
 <body>
@@ -141,15 +131,30 @@
 
             <div class="box-orange">
                 <div class="counter-wrapper">
+                    <div class="counter-label">Car Goal</div>
                     <div class="progress-container">
-                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
-                        <div class="percentage-text"><span id="amount-car">0</span>€<br><small style="font-size: 0.6rem; color: #888;">GOAL CAR</small></div>
+                        <svg width="130" height="130">
+                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
+                            <circle id="progress-car" class="circle-progress" cx="65" cy="65" r="55"></circle>
+                        </svg>
+                        <div class="percentage-text">
+                            <span id="amount-car">0</span>€<br>
+                            <small style="font-size: 0.7rem; color: #888;">/ 56 000€</small>
+                        </div>
                     </div>
                 </div>
+
                 <div class="counter-wrapper">
+                    <div class="counter-label">Insurance</div>
                     <div class="progress-container">
-                        <svg width="130" height="130"><circle class="circle-bg" cx="65" cy="65" r="55"></circle><circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle></svg>
-                        <div class="percentage-text"><span id="amount-insurance">0</span>€<br><small style="font-size: 0.6rem; color: #888;">INSURANCE</small></div>
+                        <svg width="130" height="130">
+                            <circle class="circle-bg" cx="65" cy="65" r="55"></circle>
+                            <circle id="progress-insurance" class="circle-progress" cx="65" cy="65" r="55"></circle>
+                        </svg>
+                        <div class="percentage-text">
+                            <span id="amount-insurance">0</span>€<br>
+                            <small style="font-size: 0.7rem; color: #888;">/ 1 200€</small>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,21 +176,11 @@
     <div class="footer-wrapper"><span class="footer-credit">by G4NON</span></div>
 
     <script>
-        // ==========================================
-        //  MODIFIE TES CHIFFRES ET RÉSUMÉS ICI
-        // ==========================================
+        // CHIFFRES À 0 PAR DÉFAUT
         const dataTracker = {
             2026: {
-                // Montants pour chaque mois (Janvier à Décembre)
-                gains: [500, 120, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-                
-                // RÉSUMÉS : Écris ton texte entre les guillemets ci-dessous
-                resumes: [
-                    "Résumé de Janvier : Lancement du projet G4NON. Objectif fixé à 56k€.", // Janvier
-                    "Résumé de Février : Analyse du marché et premières économies.",      // Février
-                    "Pas de résumé pour Mars.",                                           // Mars
-                    "", "", "", "", "", "", "", "", "" // Autres mois
-                ]
+                gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+                resumes: ["", "", "", "", "", "", "", "", "", "", "", ""]
             },
             2027: {
                 gains: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -214,7 +209,7 @@
                         <div class="month-list">
                             ${months.map((m, idx) => {
                                 const gain = dataTracker[year].gains[idx] || 0;
-                                const resume = dataTracker[year].resumes[idx] || "Aucun résumé disponible pour ce mois.";
+                                const resume = dataTracker[year].resumes[idx] || "Aucun résumé pour ce mois.";
                                 return `
                                 <div class="month-item" id="m-${year}-${idx}">
                                     <div class="month-header" onclick="toggleMonth('${year}-${idx}')">
