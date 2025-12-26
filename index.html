@@ -227,9 +227,8 @@
     <div class="footer-wrapper"><span class="footer-credit">by G4NON</span></div>
 
     <script>
-        // Structure séparée : gainsCar pour l'achat, gainsInsurance pour l'assurance
         const dataTracker = {
-            2026: { gainsCar: [560,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [20,0,0,0,0,0,0,0,0,0,0,0], resumes: ["idk","","","","","","","","","","",""] },
+            2026: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
             2027: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
             2028: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
             2029: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
@@ -279,7 +278,7 @@
                                     <div class="month-content">
                                         <div class="month-summary-box">
                                             <div style="margin-bottom:8px; border-bottom: 1px solid #333; padding-bottom:5px;">
-                                                🚗 Car: <strong>${gainCar} €</strong> | 🛡️ Ins: <strong>${gainIns} €</strong>
+                                                Car: <strong>${gainCar} €</strong> | Ins: <strong>${gainIns} €</strong>
                                             </div>
                                             ${resume}
                                         </div>
@@ -300,12 +299,10 @@
         function updateCounters(totalCar, totalIns) {
             const circ = 345.5;
             
-            // Calcul indépendant Car
             const offsetCar = circ - (Math.min(totalCar / goalCar, 1) * circ);
             document.getElementById('progress-car').style.strokeDashoffset = offsetCar;
             document.getElementById('amount-car').innerText = totalCar.toLocaleString();
 
-            // Calcul indépendant Insurance
             const offsetIns = circ - (Math.min(totalIns / goalInsurance, 1) * circ);
             document.getElementById('progress-insurance').style.strokeDashoffset = offsetIns;
             document.getElementById('amount-insurance').innerText = totalIns.toLocaleString();
