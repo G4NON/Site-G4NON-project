@@ -45,7 +45,6 @@
     }
 
     .column { display: flex; flex-direction: column; gap: 25px; }
-    
     .col-left { justify-content: space-between; }
 
     .box-black {
@@ -97,7 +96,6 @@
 
     .box-blue { grid-column: 1 / 3; border: var(--border-width) solid var(--accent-orange); padding: 25px; background-color: var(--card-bg); border-radius: 10px; margin-bottom: 25px; }
 
-    /* New Ideas Block Style */
     .box-ideas { 
         grid-column: 1 / 3; 
         border: 2px dashed #444; 
@@ -221,7 +219,7 @@
             <h2 style="color: var(--accent-orange); margin-top: 0;">Future ideas for the site</h2>
             <ul class="ideas-list">
                 <li class="idea-item"><strong>Dark Mode Toggle:</strong> Add a switch to alternate between different theme accents.</li>
-                <li class="idea-item"><strong>Insurance counter : </strong> The fact that the insurance counter and the car goal counter are not connected.</li>
+                <li class="idea-item"><strong>System:</strong> Trackers are now independent and synced with data.</li>
             </ul>
         </div>
     </div>
@@ -229,15 +227,16 @@
     <div class="footer-wrapper"><span class="footer-credit">by G4NON</span></div>
 
     <script>
+        // Structure séparée : gainsCar pour l'achat, gainsInsurance pour l'assurance
         const dataTracker = {
-            2026: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2027: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2028: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2029: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2030: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2031: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2032: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
-            2033: { gains: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] }
+            2026: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2027: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2028: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2029: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2030: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2031: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2032: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] },
+            2033: { gainsCar: [0,0,0,0,0,0,0,0,0,0,0,0], gainsInsurance: [0,0,0,0,0,0,0,0,0,0,0,0], resumes: ["","","","","","","","","","","",""] }
         };
 
         const goalCar = 56000;
@@ -246,31 +245,44 @@
 
         function initTracker() {
             const container = document.getElementById('year-container');
-            let globalTotal = 0;
+            let totalCarGlobal = 0;
+            let totalInsuranceGlobal = 0;
             const sortedYears = Object.keys(dataTracker).sort();
 
+            container.innerHTML = ""; 
+
             for (const year of sortedYears) {
-                let yearlyTotal = dataTracker[year].gains.reduce((a, b) => a + b, 0);
-                globalTotal += yearlyTotal;
+                let yearlyCar = dataTracker[year].gainsCar.reduce((a, b) => a + b, 0);
+                let yearlyIns = dataTracker[year].gainsInsurance.reduce((a, b) => a + b, 0);
+                
+                totalCarGlobal += yearlyCar;
+                totalInsuranceGlobal += yearlyIns;
 
                 let yearHtml = `
                     <div class="year-item" id="year-${year}">
                         <div class="year-header" onclick="toggleYear(${year})">
                             <span class="year-title">Year ${year}</span>
-                            <span class="year-total">${yearlyTotal.toLocaleString()} €</span>
+                            <span class="year-total">${(yearlyCar + yearlyIns).toLocaleString()} €</span>
                         </div>
                         <div class="month-list">
                             ${months.map((m, idx) => {
-                                const gain = dataTracker[year].gains[idx] || 0;
+                                const gainCar = dataTracker[year].gainsCar[idx] || 0;
+                                const gainIns = dataTracker[year].gainsInsurance[idx] || 0;
+                                const totalMonth = gainCar + gainIns;
                                 const resume = dataTracker[year].resumes[idx] || "No summary for this month.";
                                 return `
                                 <div class="month-item" id="m-${year}-${idx}">
                                     <div class="month-header" onclick="toggleMonth('${year}-${idx}')">
                                         <span class="month-name">${m}</span>
-                                        <span class="gain-val">${gain.toLocaleString()} €</span>
+                                        <span class="gain-val">${totalMonth.toLocaleString()} €</span>
                                     </div>
                                     <div class="month-content">
-                                        <div class="month-summary-box">${resume}</div>
+                                        <div class="month-summary-box">
+                                            <div style="margin-bottom:8px; border-bottom: 1px solid #333; padding-bottom:5px;">
+                                                🚗 Car: <strong>${gainCar} €</strong> | 🛡️ Ins: <strong>${gainIns} €</strong>
+                                            </div>
+                                            ${resume}
+                                        </div>
                                     </div>
                                 </div>
                             `}).join('')}
@@ -279,18 +291,24 @@
                 `;
                 container.innerHTML += yearHtml;
             }
-            updateCounters(globalTotal);
+            updateCounters(totalCarGlobal, totalInsuranceGlobal);
         }
 
         function toggleYear(year) { document.getElementById(`year-${year}`).classList.toggle('active'); }
         function toggleMonth(id) { document.getElementById(`m-${id}`).classList.toggle('open'); }
 
-        function updateCounters(total) {
+        function updateCounters(totalCar, totalIns) {
             const circ = 345.5;
-            document.getElementById('progress-car').style.strokeDashoffset = circ - (Math.min(total/goalCar, 1) * circ);
-            document.getElementById('amount-car').innerText = total.toLocaleString();
-            document.getElementById('progress-insurance').style.strokeDashoffset = circ - (Math.min(total/goalInsurance, 1) * circ);
-            document.getElementById('amount-insurance').innerText = Math.min(total, goalInsurance).toLocaleString();
+            
+            // Calcul indépendant Car
+            const offsetCar = circ - (Math.min(totalCar / goalCar, 1) * circ);
+            document.getElementById('progress-car').style.strokeDashoffset = offsetCar;
+            document.getElementById('amount-car').innerText = totalCar.toLocaleString();
+
+            // Calcul indépendant Insurance
+            const offsetIns = circ - (Math.min(totalIns / goalInsurance, 1) * circ);
+            document.getElementById('progress-insurance').style.strokeDashoffset = offsetIns;
+            document.getElementById('amount-insurance').innerText = totalIns.toLocaleString();
         }
 
         window.onload = () => {
